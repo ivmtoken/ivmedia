@@ -2,7 +2,7 @@
 
 <h3>General info</h3>
 
-this app is interactive video paltform .
+this app is interactive video paltform beyond the blockchain.
 
 <h3>Technologies</h3>
 
