@@ -1,0 +1,70 @@
+{
+    "name": "Ivmedia",
+    "description": "IvmediaApp: say hello interactive video!",
+    "website": "https://github.com/ivmedia",
+    "repository": "https://github.com/ivmedia",
+    "keywords": [
+        "ruby",
+        "rails",
+        "ivmedia",
+        "app"
+    ],
+    "env": {
+      "APP_DOMAIN": {
+        "value": "ivmedia.changeme"
+      },
+      "SINGLE_DOMAIN_MODE": {
+        "value": "",
+        "required": false
+      },
+      "EMAILS_DEFAULT_FROM": {
+        "value": "ivmedia@example.com",
+        "required": false
+      },
+      "SLACK_CLIENT_ID": {
+        "value": "slack_client_id"
+      },
+      "SLACK_CLIENT_SECRET": {
+        "value": "slack_client_secret"
+      },
+      "SECRET_KEY_BASE": {
+        "generator": "secret"
+      },
+      "SENDGRID_PASSWORD": {
+        "value": "sendgrid_password",
+        "required": false
+      },
+      "SENDGRID_USER_NAME": {
+        "value": "sendgrid_user_name",
+        "required": false
+      },
+      "REDIS_PROVIDER": {
+        "value": "REDISCLOUD_URL"
+      }
+    },
+    "formation": {
+      "web": {
+        "quantity": 1,
+        "size": "free"
+      },
+      "worker": {
+        "quantity": 1,
+        "size": "free"
+      }
+    },
+    "scripts": {
+      "postdeploy": "cp config/database.yml.heroku config/database.yml; bundle exec rake db:migrate"
+    },
+    "buildpacks": [
+      {
+        "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+      },
+      {
+        "url": "https://github.com/heroku/heroku-buildpack-ruby"
+      }
+    ],
+    "addons": [
+        "heroku-postgresql:hobby-dev",
+        "rediscloud:30"
+    ]
+}
